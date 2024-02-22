@@ -1,0 +1,113 @@
+.container-admin{
+    display: flex;
+    width: 800px;
+    max-width: 900px
+}
+
+
+.container-admin1{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 5px rgb(0, 0, 0, .1);
+    transition: all 1s ease;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 1);
+    border: solid 1px black
+}
+
+.container-admin1 img {
+    width: 150px;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+
+.container-admin2{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 5px rgb(0, 0, 0, .1);
+    transition: all 1s ease;
+    padding: 15px;
+    background-color: rgba(71, 139, 202, 0.9);
+    border: solid 1px black
+}
+
+input[type ="checkbox"]{
+    position: relative;
+    width: 40px;
+    height: 20px;
+    background-color: white;
+    appearance: none;
+    outline: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s ease;
+    border:  1px solid black;
+  }
+  input[type ="checkbox"]:checked {
+    background-color: black;
+  }
+
+  input[type ="checkbox"]::before{
+    content:  '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: #0e6ce6;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: 0.7s ease;
+    
+  }
+  input[type ="checkbox"]:checked::before {
+    transform: translateX(20px);
+
+  }
+  
+/* Responsive*/
+
+@media screen and (max-width:750px){
+    html{
+        font-size: 15px;
+    }
+
+    .container-admin{
+        flex-direction: column;
+        justify-content: center;
+         
+       }
+
+    .container-admin1 img {
+        width: 100px;
+    }
+    .container-admin1 {
+        width: auto;
+    }
+
+    .container-admin2 {
+        width: auto;
+    }
+}  
+
+@media screen and (max-width:580px){
+    html{
+        font-size: 12px;
+    }
+    .container-admin{
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+        width: 100%;
+    }
+   
+}
+
+

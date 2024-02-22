@@ -1,0 +1,40 @@
+body{
+    height: 100vh;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 5px rgb(0, 0, 0, .1);
+    width: 500px;
+    max-width: 900px;
+    transition: all 1s ease;
+    padding: 60px;
+    background-color: rgba(71, 139, 202, 0.4);
+    border-radius: 20px;
+    border: solid 1px black
+}
+
+
+/* Responsive*/
+
+@media screen and (max-width:750px){
+    html{
+        font-size: 15px;
+    }
+   .container{
+    padding: 50px;
+   }
+
+}
+
+@media screen and (max-width:580px){
+    html{
+        font-size: 15px;
+    }
+    .container{
+      padding: 30px;
+    }
+}
