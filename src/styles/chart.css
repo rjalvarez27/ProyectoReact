@@ -12,18 +12,18 @@
     background-color: whitesmoke;
 }
 
-@media screen and (max-width:750px) {
+@media screen and (max-width:600px) {
     html {
         font-size: 15px;
     }
     .chart-t{
         flex-direction: column;
         height: auto;
-        width: 100%;
+        width: auto;
     }
 }
 
-@media screen and (max-width:400px) {
+@media screen and (max-width:500px) {
     html {
         font-size: 12px;
     }
@@ -31,7 +31,7 @@
     .chart-t {
         flex-direction: column;
         height: auto;
-        width: 100%;
+        width: auto;
     }
 
 }
