@@ -10,22 +10,22 @@ function Admin() {
 
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [toggle, setToggle] = useState("light");
-    
 
-    const hanledMode = () => {
-        setToggle(prevTheme => prevTheme === "light" ? "dark" : "light")
-    }
-    
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem('usuarios'))
         const usuario = data.find((e) => e.rol == "admin")
         if (usuario) {
-            console.log("paso a admin")
+            alert("Bienvenido Adminitrador")
         } else {
             setToken("")
             window.location.href = '/login'
         }
     }, [token])
+
+    const hanledMode = (e) => {
+        e.preventDefault();
+        setToggle(prevTheme => prevTheme === "light" ? "dark" : "light")
+    }
 
 
 
@@ -43,7 +43,7 @@ function Admin() {
                     </div>
                     <div className='container-admin2 dark:bg-black'>
                         <div className="flex flex-row">
-                            < Chart/>
+                            < Chart />
                         </div>
                         <div>
                             <CloseSesion />

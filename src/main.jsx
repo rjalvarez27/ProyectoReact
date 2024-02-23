@@ -9,6 +9,7 @@ import { PrivateRoute } from './Routes/PrivateRoutes.jsx'
 import '../src/styles/index.css'
 
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>

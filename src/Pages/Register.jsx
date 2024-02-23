@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { validName, validCorreo, validPassword } from "../components/Regext.js";
+import { validName, validCorreo, validPassword } from "../components/Regext.jsx";
 import { Link } from "react-router-dom";
 import "../styles/register.css";
 import { dataEncrypt } from "../components/functionEncryp.jsx";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Registrarse() {
@@ -19,7 +21,17 @@ function Registrarse() {
     e.preventDefault();
     //Verificaion de datos vacios 
     if (nombre.length == 0 || email.length == 0 || password.length == 0) {
-      alert("Datos vacios");
+      toast.info('Campo vacio', {
+        position: "top-center",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+
+      });
       return
     } if (
       validName.test(nombre) &&
@@ -30,7 +42,17 @@ function Registrarse() {
       // verificacion de datos repetidos 
       const check = data.find((event) => event.email === email);
       if (check) {
-        alert("correo electronico ya esta registrado en la base");
+        toast.warn('correo electronico ya esta registrado en la base de datos', {
+          position: "top-right",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+
+        });
         setNombre("")
         setEmail("")
         setPassword("")
@@ -44,6 +66,7 @@ function Registrarse() {
       const newData = [...data, user]
       localStorage.setItem("usuarios", JSON.stringify(newData))
       // limpiar datos de los inputs 
+      
       setNombre("");
       setEmail("");
       setPassword("");
@@ -138,6 +161,7 @@ function Registrarse() {
             </form>
           </div>
         </div>
+        <ToastContainer />
       </div>
     </>
   );

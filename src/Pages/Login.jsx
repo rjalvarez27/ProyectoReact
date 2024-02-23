@@ -1,8 +1,11 @@
 import { useState } from "react"
 import { dataDecrypt } from "../components/functionEncryp";
 import { validador } from "../constant/secretkey";
-import '../styles/login.css'
 import { NavLink } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import '../styles/login.css'
+
 
 function Login() {
 
@@ -33,10 +36,34 @@ function Login() {
                     setPassword("")
                     window.location.href = '/dashboard'
                 } else {
-                    console.log("La clave no es correcto")
+                    toast.warn('La clave no es correcta', {
+                        position: "bottom-center",
+                        autoClose: 1500,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+
+                    });
+                    setEmail("")
+                    setPassword("")
                 }
             } else {
-                console.log('El correo no existe en nuestra base de datos')
+                toast.warn('Los campos estan vacios o El correo no existe en nuestra base de datos ', {
+                    position: "bottom-center",
+                    autoClose: 1500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+
+                });
+                setEmail("")
+                setPassword("")
             }
         }
     }
@@ -66,6 +93,7 @@ function Login() {
                     <NavLink to="/" className="text-white hover:text-gray-500">Registro</NavLink>
                 </div>
             </div>
+            <ToastContainer />
         </>
     )
 }

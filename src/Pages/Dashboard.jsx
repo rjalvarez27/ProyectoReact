@@ -2,10 +2,12 @@ import imagen from "../img/user.jpg"
 import Navbar from "../components/Navbar.jsx"
 import Footer from "../components/Footer.jsx"
 import CloseSesion from '../components/CloseSession.jsx'
-import { validador } from "../constant/secretkey.js"
-import { validName, validCorreo, validPassword } from "../components/Regext.js";
+import { validador } from "../constant/secretkey.jsx"
+import { validName, validCorreo, validPassword } from "../components/Regext.jsx";
 import { dataEncrypt } from "../components/functionEncryp.jsx";
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../styles/dashboard.css'
 
 const arr = [];
@@ -34,9 +36,30 @@ function Dashboard() {
     const handleName = (e) => {
         e.preventDefault();
         if (nombre.length == 0) {
-            alert("Campo vacio")
+            toast.info('Campo vacio', {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+        
+              });
             return
         } if (validName.test(nombre)) {
+            toast.success('Cambio de nombre exitoso', {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                
+                });
             const data = JSON.parse(localStorage.getItem("usuarios"))
             const usuario = data.find((e) => e.token === todo[0].token)
             if (usuario) {
@@ -51,19 +74,53 @@ function Dashboard() {
                 setNombre("");
                 setEmail("");
                 setPassword("");
-                window.location.reload()
+                setTimeout(function(){
+                      window.location.reload();
+                }, 2000);
+              
             }
         } else {
-            alert("No se pudo cambiar el nombre")
+            toast.error('No se pudo cambiar el nombre', {
+                position: "bottom-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                });
+            
         }
     }
     // cambiar Email
     const handleEmail = (e) => {
         e.preventDefault();
         if (email.length == 0) {
-            alert("Campo vacio")
+            toast.info('Campo vacio', {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+        
+              });
             return
         } if (validCorreo.test(email)) {
+            toast.success('Cambio de Correo exitoso', {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                
+                });
             const data = JSON.parse(localStorage.getItem("usuarios"))
             const usuario = data.find((e) => e.token === todo[0].token)
             if (usuario) {
@@ -78,10 +135,21 @@ function Dashboard() {
                 setNombre("");
                 setEmail("");
                 setPassword("");
-                window.location.reload()
+                setTimeout(function(){
+                    window.location.reload();
+              }, 2000);
             }
         } else {
-            alert("No se pudo cambiar el correo")
+            toast.error('No se pudo cambiar el correo', {
+                position: "bottom-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                });
         }
     }
 
@@ -89,9 +157,30 @@ function Dashboard() {
     const handlePassword = (e) => {
         e.preventDefault();
         if (password.length == 0) {
-            alert("Campo vacio")
+            toast.info('Campo vacio', {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+        
+              });
             return
         } if (validPassword.test(password)) {
+            toast.success('Cambio de Clave exitoso', {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                
+                });
             const base = JSON.parse(localStorage.getItem("usuarios"))
             const user = base.find((e) => e.token === todo[0].token)
             if (user) {
@@ -107,10 +196,21 @@ function Dashboard() {
                 setNombre("");
                 setEmail("");
                 setPassword("");
-                window.location.reload()
+                setTimeout(function(){
+                    window.location.reload();
+              }, 2000);
             }
         } else {
-            alert("Password no valido")
+            toast.error('Clave no valida', {
+                position: "bottom-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                });
         }
     }
 
@@ -118,7 +218,17 @@ function Dashboard() {
     const handlecheck = (e) => {
         e.preventDefault();
         if (secret.length === 0) {
-            alert("Campo vacio")
+            toast.info('Campo vacio', {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+        
+              });
             return
         } if (secret == todo[0].token) {
             const database = JSON.parse(localStorage.getItem("usuarios"))
@@ -134,10 +244,28 @@ function Dashboard() {
                 localStorage.setItem("usuarios", JSON.stringify(newData))
                 window.location.href = '/admin'
             } else {
-                console.log("no aprobado")
+                toast.error('No se pudo cambiar el rol', {
+                    position: "bottom-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",                    
+                    });
             }
         } else {
-            alert("ADVERTENCIA")
+            toast.error('Token No Valido', {
+                position: "bottom-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                });
         }
     }
 
@@ -146,7 +274,16 @@ function Dashboard() {
         const data = JSON.parse(localStorage.getItem('usuarios'))
         const usuario = data.find((e) => e.token == token)
         if (usuario) {
-            console.log("Exito")
+            toast.success('Bienvenido', {
+                position: "bottom-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
         } else {
             setToken("")
             setTodo("")
@@ -238,7 +375,7 @@ function Dashboard() {
             </div>
 
             <Footer />
-
+            <ToastContainer />
         </>
     )
 }
